@@ -95,6 +95,9 @@ RegisterNetEvent('jukebox_baspel:playSongClient', function(data)
     local dict = 'mini@sprunk'
     local anim = 'plyr_buy_drink_pt1'
     RequestAnimDict(dict)
+    while not HasAnimDictLoaded(dict) do 
+        Wait(10)
+    end
     TaskPlayAnim(ped, dict, anim, 8.0, 5.0, -1, true, 1, 0, 0, 0)
     Citizen.Wait(1000)
     ClearPedTasks(ped)
