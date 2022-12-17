@@ -22,6 +22,7 @@
 - Music Server synced through xsound
 - Currently supporting ESX only
 - Currently supporting ox_target too
+- Using mp3 files
 - Everything is easily configurable too
 - Can be modified
 
