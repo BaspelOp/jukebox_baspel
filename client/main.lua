@@ -117,7 +117,7 @@ CreateThread(function()
                 end
             end
         end 
-        local obj = CreateObject(v.model, x, y, z -1, true, false, false)
+        local obj = CreateObject(v.model, x, y, z -1, false, false, false)
         SetEntityHeading(obj, h)
     end
 end)
