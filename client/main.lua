@@ -131,7 +131,7 @@ CreateThread(function()
             for i=1, #Config.Locations do
                 local dist = #(playerCoords - Config.Locations[i].coordsPlay)
                 if dist <= Config.Distance then
-                    sleep = 0
+                    sleep = GetFrameTime()
                     if dist <= Config.Locations[i].distance then
                         inLocation, currentZone = true, i
                     end
