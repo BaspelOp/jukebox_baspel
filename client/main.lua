@@ -95,6 +95,9 @@ RegisterNetEvent('jukebox_baspel:playSongClient', function(data)
     local dict = 'mini@sprunk'
     local anim = 'plyr_buy_drink_pt1'
     RequestAnimDict(dict)
+    while not HasAnimDictLoaded(dict) do 
+        Wait(10)
+    end
     TaskPlayAnim(ped, dict, anim, 8.0, 5.0, -1, true, 1, 0, 0, 0)
     Citizen.Wait(1000)
     ClearPedTasks(ped)
@@ -105,14 +108,16 @@ end)
 CreateThread(function()
     for k, v in pairs(Config.Locations) do
         local x, y, z, h = table.unpack(v.coords)
-        RequestModel(v.model)
-        while not (HasModelLoaded(v.model)) do
-            Wait(1)
-            if Config.Debug then
-                print('Loading model..., please wait!')
+        if not HasModelLoaded(v.model) then 
+            RequestModel(v.model)
+            while not (HasModelLoaded(v.model)) do
+                Wait(1)
+                if Config.Debug then
+                    print('Loading model..., please wait!')
+                end
             end
-        end
-        local obj = CreateObject(v.model, x, y, z -1, true, false, false)
+        end 
+        local obj = CreateObject(v.model, x, y, z -1, false, false, false)
         SetEntityHeading(obj, h)
     end
 end)
@@ -126,7 +131,7 @@ CreateThread(function()
             for i=1, #Config.Locations do
                 local dist = #(playerCoords - Config.Locations[i].coordsPlay)
                 if dist <= Config.Distance then
-                    sleep = 0
+                    sleep = GetFrameTime()
                     if dist <= Config.Locations[i].distance then
                         inLocation, currentZone = true, i
                     end
