@@ -108,13 +108,15 @@ end)
 CreateThread(function()
     for k, v in pairs(Config.Locations) do
         local x, y, z, h = table.unpack(v.coords)
-        RequestModel(v.model)
-        while not (HasModelLoaded(v.model)) do
-            Wait(1)
-            if Config.Debug then
-                print('Loading model..., please wait!')
+        if not HasModelLoaded(v.model) then 
+            RequestModel(v.model)
+            while not (HasModelLoaded(v.model)) do
+                Wait(1)
+                if Config.Debug then
+                    print('Loading model..., please wait!')
+                end
             end
-        end
+        end 
         local obj = CreateObject(v.model, x, y, z -1, true, false, false)
         SetEntityHeading(obj, h)
     end
