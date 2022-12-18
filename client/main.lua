@@ -185,4 +185,8 @@ CreateThread(function ()
             Wait(sleep)
         end
     end
+        
+    if not Config.Music then
+        StartAudioScene('DLC_MPHEIST_TRANSITION_TO_APT_FADE_IN_RADIO_SCENE')
+    end
 end)
