@@ -6,6 +6,9 @@ Config.DefaultVolume = 0.1 -- Accepted values are 0.01 - 1
 Config.Distance = 5.0 -- Dont touch this
 Config.interact_sound_file = 'mp3' -- Only mp3 :D
 
+--- Music environment --- 
+Config.Music = true -- Turn off all default music in clubs and shops, if true all music are on
+
 --- Target system ---
 Config.ox_target = true -- If you want to use ox_target
 
