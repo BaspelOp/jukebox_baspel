@@ -25,6 +25,7 @@
 - Using mp3 files
 - Everything is easily configurable too
 - Can be modified
+- Default music in bars, clubs, shops can be turned off
 
 # Preview
 - Youtube: https://youtu.be/u3KDuCXu2q0
